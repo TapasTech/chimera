@@ -65,4 +65,10 @@ private
   def phrases_of(text)
     text.split(/\p{P}/).lazy.map(&:utf8_strip).select(&:present?).to_a.uniq
   end
+
+  String.class_eval do
+    def utf8_strip
+      self.gsub(/(\A[\u00a0\s\u3000]+|[\u00a0\s\u3000]+\Z)/, "")
+    end unless String.instance_methods.include?(:utf8_strip)
+  end
 end
