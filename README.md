@@ -31,6 +31,9 @@
     include Elasticsearch::Model
     include Dedup::Dedupable
     include Dedup::Elasticsearchable
+
+    field :content,     type: string
+    field :origin_date, type: ActiveSupport::TimeWithZone
   end
   ```
 
