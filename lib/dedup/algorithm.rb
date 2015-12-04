@@ -12,7 +12,7 @@ class Dedup::Algorithm
   def setup_elasticsearch_query(searcher)
     searcher.should :more_like_this, {
       fields: ['content'],
-      like: text_of(@data[:content]),
+      like_text: text_of(@data[:content]),
       max_query_terms: @max_query_terms,
       min_term_freq:   1
     }
